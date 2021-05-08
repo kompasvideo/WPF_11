@@ -26,6 +26,11 @@ namespace HomeWork_WPF
         ObservableCollection<Department> departments;
         ObservableCollection<Employee> Employees { get; set; }
 
+        /// <summary>
+        /// копия Employees
+        /// </summary>
+        ObservableCollection<Employee> EmployeesCopy { get; set; }
+
         // выбранный TreeViewItem 
         Department select;
 
@@ -144,6 +149,7 @@ namespace HomeWork_WPF
                 new Worker("Имя_41","Фамилия_41", 40,3),
                 new Intern("Имя_42","Фамилия_42", 40,1),
             };
+            EmployeesCopy = new ObservableCollection<Employee>();
             select = departments[0];
             SaveManager(departments);
             treeView.ItemsSource = departments;
@@ -166,17 +172,17 @@ namespace HomeWork_WPF
             select = (Department)e.NewValue;
             FIO.DataContext = new SelectProvider(select);
             Salary.DataContext = new SelectProvider(select);
-            //l_Workers.Clear();
-            //foreach (var w in Workers)
-            //{
-            //    if (select.DepartmentId != 0)
-            //    {
-            //        if (w.DepartmentId == select.DepartmentId)
-            //            l_Workers.Add(w);
-            //    }
-            //    else l_Workers.Add(w);
-            //}
-            //WPFDataGrid.ItemsSource = l_Workers;
+            EmployeesCopy.Clear();
+            foreach (var w in Employees)
+            {
+                if (select.DepartmentId != 0)
+                {
+                    if (w.DepartmentId == select.DepartmentId)
+                        EmployeesCopy.Add(w);
+                }
+                else EmployeesCopy.Add(w);
+            }
+            WPFDataGrid.ItemsSource = EmployeesCopy;
         }
     }
 }
