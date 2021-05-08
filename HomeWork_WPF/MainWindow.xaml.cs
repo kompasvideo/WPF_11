@@ -26,11 +26,6 @@ namespace HomeWork_WPF
         ObservableCollection<Department> departments;
         ObservableCollection<Employee> Employees { get; set; }
 
-        /// <summary>
-        /// копия Employees
-        /// </summary>
-        ObservableCollection<Employee> EmployeesCopy { get; set; }
-
         // выбранный TreeViewItem 
         Department select;
 
