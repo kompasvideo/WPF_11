@@ -23,8 +23,8 @@ namespace HomeWork_WPF
     public partial class MainWindow : Window
     {
         // Список отделов
-        ObservableCollection<Department> departments;
-        ObservableCollection<Employee> Employees { get; set; }
+        static ObservableCollection<Department> departments;
+        static ObservableCollection<Employee> Employees { get; set; }
 
         // выбранный TreeViewItem 
         Department select;
@@ -255,6 +255,67 @@ namespace HomeWork_WPF
             FIO.DataContext = new SelectProvider(select);
             Salary.DataContext = new SelectProvider(select);
             myView.Filter = new Predicate<object>(myFilter);
+        }
+        public static void SetSalary(uint p_depId)
+        {
+            foreach (var emp in Employees)
+            {
+                if (emp.DepartmentId == p_depId)
+                {
+                    if (emp.GetType() == typeof(Worker))
+                    {
+                        salary += emp.Salary * 8 * 23;
+                    }
+                    if (emp.GetType() == typeof(Intern))
+                    {
+                        salary += emp.Salary;
+                    }
+                }
+            }           
+        }
+
+
+        static int salary = 0;
+
+        public static int GetDepartment(uint p_depId)
+        {
+            salary = 0;
+            foreach (var dep in departments)
+            {
+                if (dep.DepartmentId == p_depId)
+                    SearchDepartment(p_depId, dep.Departments, true);
+                else
+                    SearchDepartment(p_depId, dep.Departments,false);
+            }
+            return salary;
+        }
+        private static void SearchDepartment(uint p_depId, ObservableCollection<Department> departments,bool child)
+        {            
+            foreach (var dep in departments)
+            {
+                if (dep.DepartmentId == p_depId)
+                {
+                    SetSalary(p_depId);
+                    if (dep.Departments != null)
+                    {
+                        foreach (var depR in dep.Departments)
+                        {
+                            SearchDepartment(p_depId, dep.Departments, true);
+                        }
+                    }
+                }
+                else
+                {
+                    if (child)
+                    {
+                        SetSalary(p_depId);
+                    }
+                    if (dep.Departments != null)
+                    {
+                        SearchDepartment(p_depId, dep.Departments, child);
+                    }
+                }
+            }
         }
     }
 }

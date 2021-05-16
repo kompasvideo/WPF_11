@@ -12,10 +12,11 @@ namespace HomeWork_WPF.Employees
         { 
             get
             {
-                return 1300;
+                //return MainWindow.GetSalary(DepartmentId);
+                return MainWindow.GetDepartment(DepartmentId);
             }
         }
-        public Manager(string firstName, string lastName, int age, int departmentId, string job = "Руководитель") : 
+        public Manager(string firstName, string lastName, int age, uint departmentId, string job = "Руководитель") : 
             base(firstName, lastName, age, departmentId, job)
         {           
         }
