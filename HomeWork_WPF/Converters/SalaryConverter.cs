@@ -13,7 +13,7 @@ namespace HomeWork_WPF
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return string.Format($"Оклад: ${((int)value)}");
+            return string.Format($"Оклад: {value}");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

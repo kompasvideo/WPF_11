@@ -8,7 +8,7 @@ namespace HomeWork_WPF.Employees
 {
     class Intern : Employee
     {
-        public Intern(string firstName, string lastName, int age, int departmentId, string job = "Интерн") :
+        public Intern(string firstName, string lastName, int age, uint departmentId, string job = "Интерн") :
             base(firstName, lastName, age, departmentId, job)
         {
         }
