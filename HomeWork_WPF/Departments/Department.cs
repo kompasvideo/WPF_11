@@ -8,7 +8,8 @@ using HomeWork_WPF.Employees;
 
 namespace HomeWork_WPF
 {
-    class Department 
+    [Serializable]
+    public class Department 
     {
         // департаменты
         protected List<Department> departments;

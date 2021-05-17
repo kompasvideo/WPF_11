@@ -7,13 +7,20 @@ using System.Threading.Tasks;
 
 namespace HomeWork_WPF
 {
+    [Serializable]
     public abstract class Employee : INotifyPropertyChanged
     {
+        [NonSerialized]
         string firstName;
+        [NonSerialized]
         string lastName;
+        [NonSerialized]
         int salary;
+        [NonSerialized]
         int age;
+        [NonSerialized]
         uint departmentId;
+        [NonSerialized]
         string job;
 
         public string FirstName
@@ -78,6 +85,9 @@ namespace HomeWork_WPF
             Age = age;
             DepartmentId = departmentId;
             Job = job;
+        }
+        public Employee()
+        {
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

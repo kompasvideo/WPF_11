@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HomeWork_WPF.Employees
 {
-    class Manager:Employee
+    [Serializable]
+    public class Manager:Employee
     {
         public override int Salary 
         { 
@@ -19,6 +20,9 @@ namespace HomeWork_WPF.Employees
         public Manager(string firstName, string lastName, int age, uint departmentId, string job = "Руководитель") : 
             base(firstName, lastName, age, departmentId, job)
         {           
+        }
+        public Manager() 
+        {
         }
     }
 }

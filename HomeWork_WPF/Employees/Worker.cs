@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace HomeWork_WPF.Employees
 {
-    class Worker :Employee
+    [Serializable]
+    public class Worker :Employee
     {
         public Worker(string firstName, string lastName, int age, uint departmentId, string job = "Рабочий") :
             base(firstName, lastName, age, departmentId, job)
+        {
+        }
+        public Worker()
         {
         }
         public override int Salary
