@@ -7,7 +7,14 @@ using System.Threading.Tasks;
 
 namespace HomeWork_WPF
 {
-    public abstract class Employee : INotifyPropertyChanged
+    public enum EnEmployee: int
+    {
+        Employee,
+        Worker,
+        Intern,
+        Manager
+    }
+    public class Employee : INotifyPropertyChanged
     {
         string firstName;
         string lastName;
@@ -15,6 +22,7 @@ namespace HomeWork_WPF
         int age;
         uint departmentId;
         string job;
+        EnEmployee eEmployee;
 
         public string FirstName
         {
@@ -70,6 +78,14 @@ namespace HomeWork_WPF
                 OnPropertyChanged("Job");
             }
         }
+        public EnEmployee EEmployee
+        {
+            get { return eEmployee; }
+            set
+            {
+                eEmployee = value;
+            }
+        }
 
         public Employee(string firstName, string lastName, int age, uint departmentId, string job)
         {
@@ -78,6 +94,7 @@ namespace HomeWork_WPF
             Age = age;
             DepartmentId = departmentId;
             Job = job;
+            eEmployee = EnEmployee.Employee;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -11,6 +11,7 @@ namespace HomeWork_WPF.Employees
         public Worker(string firstName, string lastName, int age, uint departmentId, string job = "Рабочий") :
             base(firstName, lastName, age, departmentId, job)
         {
+            EEmployee = EnEmployee.Worker;
         }
         public override int Salary
         {
